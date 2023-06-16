@@ -71,19 +71,18 @@ const Category = ({category,products,slug}) => {
 
 export default Category;
 export async function getStaticPaths() {
-  const category = await fetchData("/api/categories?populate=*");
-  const paths = category?.data?.map((c) => ({
-      params: {
-          slug: c.attributes.slug,
-      },
-  }));
+    const category = await fetchData("/api/categories?populate=*");
+    const paths = category?.data?.map((c) => ({
+        params: {
+            slug: c.attributes.slug,
+        },
+    }));
 
-  return {
-      paths,
-      fallback: false,
-  };
+    return {
+        paths,
+        fallback: false,
+    };
 }
-
 // `getStaticPaths` requires using `getStaticProps`
 export async function getStaticProps({ params: { slug } }) {
   const category = await fetchData(
