@@ -137,7 +137,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params: { slug } }) {
     const product = await fetchData(
-        `/api/products?populate=*&filters[slug][$eq]=${slug}`
+        `/api/products?populate=*&filters[slug][$eq]=${slug}` 
     );
     const products = await fetchData(
         `/api/products?populate=*&[filters][slug][$ne]=${slug}`
